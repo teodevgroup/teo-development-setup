@@ -1,3 +1,5 @@
+echo "Welcome to Teo setup script. This script will clone all Teo repos to the current directory. Make sure you are in the correct directory."
+
 source=GitHub
 other_reference=false
 
