@@ -10,11 +10,15 @@ select opt in "${source_options[@]}"
 do
     case $opt in
         "GitHub")
-            source=GitHub
+            source=https://github.com
+            source_other=https://gitee.com
+            other_name=gitee
             break
             ;;
         "Gitee")
-            source=Gitee
+            source=https://gitee.com
+            source_other=https://github.com
+            other_name=github
             break
             ;;
         *) echo "invalid option $REPLY";;
@@ -47,3 +51,21 @@ if [ -z "${prefix}" ]; then
 fi
 
 echo $source $other_reference $prefix
+
+repos=("teo" "teo-result" "teo-teon" "teo-parser" "teo-runtime" "teo-sql-connector" "teo-mongodb-connector" "teo-generator" "teo-nodejs" "teo-python" "teo-vscode" "teo-language-server-wasm" "teo-language-server")
+
+for repo in ${repos[@]}; do
+    echo "Clone $source/$prefix/$repo"
+    git clone "$source/$prefix/$repo" > /dev/null 2>&1
+
+    if [[ $other_reference == true ]]; then
+        echo "Setup remote $other_name for $repo"
+        cd $repo
+        git remote add $other_name "$source_other/$prefix/$repo" > /dev/null 2>&1
+        git fetch $other_name main > /dev/null 2>&1
+        cd ..
+    fi
+
+done
+
+echo "Finish setup! Happy coding!"
