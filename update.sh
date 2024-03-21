@@ -1,6 +1,6 @@
 echo "Welcome to Teo update script. This script will update all repos."
 
-repos=("teo" "teo-result" "teo-teon" "teo-parser" "teo-runtime" "teo-sql-connector" "teo-mongodb-connector" "teo-generator" "teo-nodejs" "teo-python" "teo-vscode" "teo-language-server-wasm" "teo-language-server")
+repos=("teo" "teo-result" "teo-parser" "teo-runtime" "teo-sql-connector" "teo-mongodb-connector" "teo-generator" "teo-nodejs" "teo-python" "teo-vscode" "teo-language-server-wasm" "teo-language-server")
 for repo in ${repos[@]}; do
     cd $repo
     git pull origin main > /dev/null 2>&1
