@@ -58,16 +58,17 @@ for repo in ${repos[@]}; do
     echo "Clone $source/$prefix/$repo"
     git clone "$source/$prefix/$repo" > /dev/null 2>&1
 
+    if [[ $prefix != teocloud ]]; then
+        echo "Setup upstream for $repo"
+        git remote add upstream "$source/teocloud/$repo" > /dev/null 2>&1
+        git fetch upstream main > /dev/null 2>&1
+    fi
+    
     if [[ $other_reference == true ]]; then
         echo "Setup remote $other_name for $repo"
         cd $repo
         git remote add $other_name "$source_other/$prefix/$repo" > /dev/null 2>&1
         git fetch $other_name main > /dev/null 2>&1
-        if [[ $prefix != teocloud ]]; then
-            echo "Setup upstream for $repo"
-            git remote add upstream "$source/teocloud/$repo" > /dev/null 2>&1
-            git fetch upstream main > /dev/null 2>&1
-        fi
         cd ..
     fi
 
