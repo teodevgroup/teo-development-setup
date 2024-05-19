@@ -44,10 +44,10 @@ do
 done
 
 # read path
-read -p "Enter git repo prefix (default \"teocloud\"): " prefix
+read -p "Enter git repo prefix (default \"teodevgroup\"): " prefix
 
 if [ -z "${prefix}" ]; then
-    prefix=teocloud
+    prefix=teodevgroup
 fi
 
 echo $source $other_reference $prefix
@@ -59,9 +59,9 @@ for repo in ${repos[@]}; do
     git clone "$source/$prefix/$repo" > /dev/null 2>&1
     
     cd $repo
-    if [[ $prefix != teocloud ]]; then
+    if [[ $prefix != teodevgroup ]]; then
         echo "Setup upstream for $repo"
-        git remote add upstream "$source/teocloud/$repo" > /dev/null 2>&1
+        git remote add upstream "$source/teodevgroup/$repo" > /dev/null 2>&1
         git fetch upstream main > /dev/null 2>&1
     fi
     if [[ $other_reference == true ]]; then
