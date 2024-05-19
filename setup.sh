@@ -44,10 +44,10 @@ do
 done
 
 # read path
-read -p "Enter git repo prefix (default \"teocloud\"): " prefix
+read -p "Enter git repo prefix (default \"teodevgroup\"): " prefix
 
 if [ -z "${prefix}" ]; then
-    prefix=teocloud
+    prefix=teodevgroup
 fi
 
 echo $source $other_reference $prefix
