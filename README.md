@@ -1,6 +1,8 @@
 Teo development setup
 =====================
 
+This repository is **DEPRECATED**.
+
 Script for setup Teo development environment.
 
 ## Setup
